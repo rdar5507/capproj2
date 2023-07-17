@@ -1,3 +1,12 @@
+# Assignment instructions https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DS0321EN-SkillsNetwork/labs/module_3/lab_theia_plotly_dash.md.html
+
+# Steps to setup development environment
+# pip3 install pandas dash
+# wget "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DS0321EN-SkillsNetwork/datasets/spacex_launch_dash.csv"
+# following code is a modified version of this skeleton which you can download with
+# wget "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DS0321EN-SkillsNetwork/labs/module_3/spacex_dash_app.py"
+# python3 spacex_dash_app.py
+
 # Import required libraries
 import pandas as pd
 import dash
@@ -20,7 +29,8 @@ app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
                                                'font-size': 40}),
                                 # TASK 1: Add a dropdown list to enable Launch Site selection
                                 # The default select value is for ALL sites
-                                  dcc.Dropdown(id='id',
+                                # dcc.Dropdown(id='site-dropdown',...)
+                                dcc.Dropdown(id='site-dropdown',
                                              options=[
                                                      {'label': 'All Sites', 'value': 'ALL'},
                                                      {'label': 'CCAFS LC-40', 'value': 'CCAFS LC-40'},
@@ -28,12 +38,12 @@ app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
                                                      {'label': 'KSC LC-39A', 'value': 'KSC LC-39A'},
                                                      {'label': 'CCAFS SLC-40', 'value': 'CCAFS SLC-40'}
                                                      ],
-                                            value='ALL',
-                                            placeholder="place holder here",
-                                            searchable=True
-                                            ),
+                                             value='ALL',
+                                             placeholder='Select a Launch Site here',
+                                             searchable=True
+                                             # style={'width':'80%','padding':'3px','font-size':'20px','text-align-last':'center'}
+                                             ),
                                 html.Br(),
-                                
 
                                 # TASK 2: Add a pie chart to show the total successful launches count for all sites
                                 # If a specific launch site was selected, show the Success vs. Failed counts for the site
@@ -42,6 +52,7 @@ app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
 
                                 html.P("Payload range (Kg):"),
                                 # TASK 3: Add a slider to select payload range
+                                #dcc.RangeSlider(id='payload-slider',...)
                                 dcc.RangeSlider(id='payload-slider',
                                                 min=0,
                                                 max=10000,
